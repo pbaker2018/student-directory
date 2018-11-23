@@ -22,12 +22,12 @@ def print_header
   puts "-------------"
 end
 
-def print_name(students)
-  students.each_with_index do |person, index|
-    person.each do |key,value|
-      if key == :name && value.length < 12
-        puts "#{index+1}. #{value} (#{person[:cohort]} cohort)"
-      end
+def print(students)
+  current_index = 0
+  while current_index < students.length
+    students.each do |student|
+      puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  current_index += 1
     end
   end
 end
@@ -38,5 +38,5 @@ end
 
 students = input_students
 print_header
-print_name(students)
+print(students)
 print_footer(students)
