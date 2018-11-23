@@ -1,17 +1,19 @@
+$input = ""
+
 def input_students
 
   students = []
   puts "Please enter name of student"
   puts "To stop entering names, press return five times"
-  name = gets.chomp.to_sym
+  name = gets.chomp
   puts "Please enter main hobby"
-  hobby = gets.chomp.to_sym
+  hobby = gets.chomp
   puts "Please enter students date of birth as xx-xx-xx"
-  dateOfBirth = gets.chomp.to_sym
+  dateOfBirth = gets.chomp
   puts "Please enter nationality of student"
-  nationality = gets.chomp.to_sym
+  nationality = gets.chomp
   puts "Please enter cohort start month"
-  cohort = gets.chomp.to_sym
+  cohort = gets.chomp
 
   person = {
     name: name,
@@ -26,15 +28,15 @@ def input_students
   while !name.empty? do
     puts "Please enter name of student"
     puts "To stop entering names, press return five times"
-    name = gets.chomp.to_sym
+    name = gets.chomp
     puts "Please enter main hobby"
-    hobby = gets.chomp.to_sym
+    hobby = gets.chomp
     puts "Please enter students date of birth as xx-xx-xx"
-    dateOfBirth = gets.chomp.to_sym
+    dateOfBirth = gets.chomp
     puts "Please enter nationality of student"
-    nationality = gets.chomp.to_sym
+    nationality = gets.chomp
     puts "Please enter cohort start month"
-    cohort = gets.chomp.to_sym
+    cohort = gets.chomp
 
     person = {
       name: name,
@@ -49,24 +51,32 @@ def input_students
     students[0..-2]
 end
 
-def print_header
-  puts "The students of Villains Academy".center(50)
-  puts "-------------".center(50)
+def acquire_input
+    $input = gets.chomp
 end
 
-def print(students)
-  students.each{|person| puts "#{person[:name]}, #{person[:hobby]}, #{person[:dateOfBirth]}, #{person[:nationality]} (#{person[:cohort]} cohort)".center(50)}
-end
-
-def print_footer(students)
-  if students.count == 1
-    puts "Overall, we have #{students.count} great student".center(50)
-  else
-    puts "Overall, we have #{students.count} great students".center(50)
+  def ask_user_for_cohort
+    puts "Enter what cohort to print"
   end
-end
 
-students = input_students
-print_header
-print(students)
-print_footer(students)
+  def print_by_cohort(students)
+
+    students_by_cohort = {}
+
+    students.each do |person|
+      cohort = person[:cohort]
+
+      if students_by_cohort[cohort] == nil
+        students_by_cohort[cohort] = []
+      end
+
+    students_by_cohort[cohort].push(person[:name]).push(person[:hobby]).push(person[:dateOfBirth]).push(person[:nationality])
+    end
+
+    ask_user_for_cohort
+    acquire_input
+    puts students_by_cohort[$input]
+   end
+
+  students = input_students
+  print_by_cohort(students)
