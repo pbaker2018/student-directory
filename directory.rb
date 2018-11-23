@@ -25,7 +25,7 @@ end
 def print_name(students)
   students.each_with_index do |person, index|
     person.each do |key,value|
-      if key == :name && value[0] == "a"
+      if key == :name && value.length < 12
         puts "#{index+1}. #{value} (#{person[:cohort]} cohort)"
       end
     end
