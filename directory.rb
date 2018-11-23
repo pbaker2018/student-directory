@@ -5,15 +5,15 @@ def input_students
   students = []
   puts "Please enter name of student"
   puts "To stop entering names, press return five times"
-  name = gets.chomp
+  name = gets.strip
   puts "Please enter main hobby"
-  hobby = gets.chomp
+  hobby = gets.strip
   puts "Please enter students date of birth as xx-xx-xx"
-  dateOfBirth = gets.chomp
+  dateOfBirth = gets.strip
   puts "Please enter nationality of student"
-  nationality = gets.chomp
+  nationality = gets.strip
   puts "Please enter cohort start month"
-  cohort = gets.chomp
+  cohort = gets.strip
 
   person = {
     name: name,
@@ -28,15 +28,15 @@ def input_students
   while !name.empty? do
     puts "Please enter name of student"
     puts "To stop entering names, press return five times"
-    name = gets.chomp
+    name = gets.strip
     puts "Please enter main hobby"
-    hobby = gets.chomp
+    hobby = gets.strip
     puts "Please enter students date of birth as xx-xx-xx"
-    dateOfBirth = gets.chomp
+    dateOfBirth = gets.strip
     puts "Please enter nationality of student"
-    nationality = gets.chomp
+    nationality = gets.strip
     puts "Please enter cohort start month"
-    cohort = gets.chomp
+    cohort = gets.strip
 
     person = {
       name: name,
@@ -52,7 +52,7 @@ def input_students
 end
 
 def acquire_input
-    $input = gets.chomp
+    $input = gets.strip
 end
 
   def ask_user_for_cohort
@@ -69,13 +69,14 @@ end
       if students_by_cohort[cohort] == nil
         students_by_cohort[cohort] = []
       end
-
-    students_by_cohort[cohort].push(person[:name]).push(person[:hobby]).push(person[:dateOfBirth]).push(person[:nationality])
+    person_array = []
+    person_array.push(person[:name]).push(person[:hobby]).push(person[:dateOfBirth]).push(person[:nationality])
+    students_by_cohort[cohort].push(person_array)
     end
 
     ask_user_for_cohort
     acquire_input
-    puts students_by_cohort[$input]
+    students_by_cohort[$input]
    end
 
   students = input_students
