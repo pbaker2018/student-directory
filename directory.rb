@@ -3,15 +3,15 @@ def input_students
   students = []
   puts "Please enter name of student"
   puts "To stop entering names, press return five times"
-  name = gets.chomp
+  name = gets.chomp.to_sym
   puts "Please enter main hobby"
-  hobby = gets.chomp
+  hobby = gets.chomp.to_sym
   puts "Please enter students date of birth as xx-xx-xx"
-  dateOfBirth = gets.chomp
+  dateOfBirth = gets.chomp.to_sym
   puts "Please enter nationality of student"
-  nationality = gets.chomp
+  nationality = gets.chomp.to_sym
   puts "Please enter cohort start month"
-  cohort = gets.chomp
+  cohort = gets.chomp.to_sym
 
   person = {
     name: name,
@@ -26,15 +26,15 @@ def input_students
   while !name.empty? do
     puts "Please enter name of student"
     puts "To stop entering names, press return five times"
-    name = gets.chomp
+    name = gets.chomp.to_sym
     puts "Please enter main hobby"
-    hobby = gets.chomp
+    hobby = gets.chomp.to_sym
     puts "Please enter students date of birth as xx-xx-xx"
-    dateOfBirth = gets.chomp
+    dateOfBirth = gets.chomp.to_sym
     puts "Please enter nationality of student"
-    nationality = gets.chomp
+    nationality = gets.chomp.to_sym
     puts "Please enter cohort start month"
-    cohort = gets.chomp
+    cohort = gets.chomp.to_sym
 
     person = {
       name: name,
