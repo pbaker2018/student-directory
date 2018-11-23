@@ -2,7 +2,7 @@ def input_students
 
   students = []
   puts "Please enter name of student"
-  puts "To stop entering names, press return four times"
+  puts "To stop entering names, press return five times"
   name = gets.chomp
   puts "Please enter main hobby"
   hobby = gets.chomp
@@ -10,20 +10,22 @@ def input_students
   dateOfBirth = gets.chomp
   puts "Please enter nationality of student"
   nationality = gets.chomp
+  puts "Please enter cohort start month"
+  cohort = gets.chomp
 
   person = {
     name: name,
     hobby: hobby,
     dateOfBirth: dateOfBirth,
     nationality: nationality,
-    cohort: :November
+    cohort: cohort
   }
 
   students << person
 
   while !name.empty? do
     puts "Please enter name of student"
-    puts "To stop entering names, press return four times"
+    puts "To stop entering names, press return five times"
     name = gets.chomp
     puts "Please enter main hobby"
     hobby = gets.chomp
@@ -31,13 +33,15 @@ def input_students
     dateOfBirth = gets.chomp
     puts "Please enter nationality of student"
     nationality = gets.chomp
+    puts "Please enter cohort start month"
+    cohort = gets.chomp
 
     person = {
       name: name,
       hobby: hobby,
       dateOfBirth: dateOfBirth,
       nationality: nationality,
-      cohort: :November
+      cohort: cohort
     }
 
     students << person
@@ -53,8 +57,6 @@ end
 def print(students)
   students.each{|person| puts "#{person[:name]}, #{person[:hobby]}, #{person[:dateOfBirth]}, #{person[:nationality]} (#{person[:cohort]} cohort)".center(50)}
 end
-
-
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students".center(50)
