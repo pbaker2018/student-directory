@@ -22,17 +22,21 @@ def print_header
   puts "-------------"
 end
 
-def print(names)
-  names.each_with_index do |name, index|
-    puts "#{index+1}. #{name}"
+def print_name(students)
+  students.each_with_index do |person, index|
+    person.each do |key,value|
+      if key == :name && value[0] == "a"
+        puts "#{index+1}. #{value} (#{person[:cohort]} cohort)"
+      end
+    end
   end
 end
 
-def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+def print_footer(students)
+  puts "Overall, we have #{students.count} great students"
 end
 
 students = input_students
 print_header
-print(students)
+print_name(students)
 print_footer(students)
