@@ -1,20 +1,48 @@
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-  # create an empty array
+
   students = []
-  # get the first name
+  puts "Please enter name of student"
+  puts "To stop entering names, press return four times"
   name = gets.chomp
-  # while the name is not empty, repeat this code
+  puts "Please enter main hobby"
+  hobby = gets.chomp
+  puts "Please enter students date of birth as xx-xx-xx"
+  dateOfBirth = gets.chomp
+  puts "Please enter nationality of student"
+  nationality = gets.chomp
+
+  person = {
+    name: name,
+    hobby: hobby,
+    dateOfBirth: dateOfBirth,
+    nationality: nationality,
+    cohort: :November
+  }
+
+  students << person
+
   while !name.empty? do
-    # add the student hash to the array
-    students << {name: name, cohort: :november}
-    puts "Now we have #{students.count} students"
-    # get another name from the user
+    puts "Please enter name of student"
+    puts "To stop entering names, press return four times"
     name = gets.chomp
+    puts "Please enter main hobby"
+    hobby = gets.chomp
+    puts "Please enter students date of birth as xx-xx-xx"
+    dateOfBirth = gets.chomp
+    puts "Please enter nationality of student"
+    nationality = gets.chomp
+
+    person = {
+      name: name,
+      hobby: hobby,
+      dateOfBirth: dateOfBirth,
+      nationality: nationality,
+      cohort: :November
+    }
+
+    students << person
   end
-  # return the array of students
-  students
+    students[0..-2]
 end
 
 def print_header
@@ -23,14 +51,10 @@ def print_header
 end
 
 def print(students)
-  current_index = 0
-  while current_index < students.length
-    students.each do |student|
-      puts "#{student[:name]} (#{student[:cohort]} cohort)"
-  current_index += 1
-    end
-  end
+  students.each{|person| puts "#{person[:name]}, #{person[:hobby]}, #{person[:dateOfBirth]}, #{person[:nationality]} (#{person[:cohort]} cohort)"}
 end
+
+
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
