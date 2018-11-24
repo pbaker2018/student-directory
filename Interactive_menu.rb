@@ -20,7 +20,7 @@ def print_header
   puts "-------------"
 end
 
-def print
+def print_student_list
   if @students.length > 0
     @students.each do |student|
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
@@ -32,22 +32,23 @@ def print_footer
   puts "Overall, we have #{@students.count} great students"
 end
 
-def interactive_menu
-  loop do
-    # 1. print the menu and ask the user what to do
-    print_menu
-    selection = gets.chomp
-    # 3. do what the user has asked
-    case selection
+def process(selection)
+  case selection
     when "1"
       input_students
     when "2"
       show_students
     when "9"
-      exit # this will cause the program to terminate
+      exit
     else
-      puts "I don't know what you meant, try again"
-    end
+      puts "I don't know what you mean, try again"
+  end
+end
+
+def interactive_menu
+  loop do
+    print_menu
+    process(gets.chomp)
   end
 end
 
@@ -59,7 +60,7 @@ end
 
 def show_students
   print_header
-  print
+  print_student_list
   print_footer
 end
 
